@@ -1,0 +1,8 @@
+Abweichung bei Euler bei 10 Schritten: -0.021456
+Abweichung bei Heun  bei 10 Schritten: -0.00077474
+Abweichung bei Euler bei 100 Schritten: -0.00218645
+Abweichung bei Heun  bei 100 Schritten: -1.56502e-006
+Abweichung bei Euler bei 1000 Schritten: -0.00021903
+Abweichung bei Heun  bei 1000 Schritten: -1.06239e-008
+Abweichung bei Euler bei 10000 Schritten: -2.19069e-005
+Abweichung bei Heun  bei 10000 Schritten: -1.01331e-010

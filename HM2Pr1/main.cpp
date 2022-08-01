@@ -31,9 +31,9 @@ int main()
 
 	while (true) {
 		while (!(cin >> choice)) {
-			cout << "Falsche Eingabe. Bitte nochmal versuchen: " << endl;
+			cout << "False input. Please try again: " << endl;
+			cin.clear();
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			break;
 		}
 		// print out
 		switch (choice) {
@@ -42,7 +42,11 @@ int main()
 			{
 				cin.ignore(numeric_limits<streamsize>::max(), '\n');
 				cout << "Please insert the point: " << endl;
-				cin >> x >> y >> z;
+				while (!(cin >> x >> y >> z)) {
+					cout << "The input is not correct. Please try again: " << endl;
+					cin.clear();
+					cin.ignore(numeric_limits<streamsize>::max(), '\n');
+				}
 				vector<double> ptVect{ x, y, z };
 				CMyVektor pt(ptVect);
 				double (*funktion1)(CMyVektor x) = &func;
@@ -64,7 +68,11 @@ int main()
 				cin.ignore(numeric_limits<streamsize>::max(), '\n');
 				CMyVektor(*funktion2)(CMyVektor x) = &functForNewton;
 				cout << "Please insert the point: " << endl;
-				cin >> x >> y;
+				while (!(cin >> x >> y)) {
+					cout << "The input is not correct. Please try again: " << endl;
+					cin.clear();
+					cin.ignore(numeric_limits<streamsize>::max(), '\n');
+				}
 				vector<double> ptVect{ x, y };
 				CMyVektor pt(ptVect);
 				CMyMatrix matrx = CMyMatrix(funktion2(pt).getDim(), pt.getDim(), 0.0);
@@ -85,11 +93,19 @@ int main()
 				int methodChoice;
 				cout << "Please choose the method: " << endl;
 				cout << "1 - Euler; 2 - Heun; 3 - Difference; " << endl;
-				cin >> methodChoice;
+				while (!(cin >> methodChoice) || (methodChoice < 0 || methodChoice > 3)) {
+					cout << "The input is not correct. Please try again: " << endl;
+					cin.clear();
+					cin.ignore(numeric_limits<streamsize>::max(), '\n');
+				}
 				CMyVektor(*dgl_sys)(CMyVektor y, double x) = &f_DGL_System;
 				C_DGLSolver solveDGL(dgl_sys);
 				cout << "Please insert the y start: ";
-				cin >> x >> y;
+				while (!(cin >> x >> y)) {
+					cout << "The input is not correct. Please try again: " << endl;
+					cin.clear();
+					cin.ignore(numeric_limits<streamsize>::max(), '\n');
+				}
 				vector<double> point{ x, y };
 				CMyVektor y_start = CMyVektor(point.size(), point);
 				// x end is 2 in this case, x start is 0
@@ -139,7 +155,11 @@ int main()
 				cout << "Press 1 - to transform, 2 - to estimate the maximal difference with standard epsilon" << endl;
 				int tran;
 				string trafo;
-				cin >> tran;
+				while (!(cin >> tran) || (tran < 0 || tran > 2)) {
+					cout << "The input is not correct. Please try again: " << endl;
+					cin.clear();
+					cin.ignore(numeric_limits<streamsize>::max(), '\n');
+				}
 				if (tran == 1) {
 					cout << "Forth or back transformation? (h/b)" << endl;
 					cin >> trafo;
@@ -187,7 +207,11 @@ int main()
 				int inputChoice;
 				cout << "Please choose: 1 - to do k-from-n Lotto simulation and probability of taking r correct numbers" << endl;
 				cout << "2 - to do k-from-n Lotto with monte carlo simulation" << endl;
-				cin >> inputChoice;
+				while (!(cin >> inputChoice) || (inputChoice < 0 || inputChoice > 2)) {
+					cout << "The input is not correct. Please try again: " << endl;
+					cin.clear();
+					cin.ignore(numeric_limits<streamsize>::max(), '\n');
+				}
 				if (inputChoice == 1) {
 					int N, k, n, r, p;
 					cout << "Please choose N: " << endl;
